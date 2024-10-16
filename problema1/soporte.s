@@ -16,10 +16,12 @@ capturar_tiempo:
     .Lwhile:
         cmp     r1, #7          // while ( i < 7 )
         bgt     .Lend_while
+
+        bl      recibir_RTC     // R0 = byte de tiempo en BCD
+
         cmp     r1, #4          // if ( i != 4 )
         beq     .Lend_if
 
-        bl      recibir_RTC     // R0 = byte de tiempo en BCD
         mov     r3, r0
         and     r3, r3, #0x0F   // R3 contiene los 4 bits de unidades
         mov     r2, r0, lsr #4
