@@ -1,3 +1,14 @@
+/*  Procedimiento en C
+    if ( pulse_state == 1 ) {
+        pulse_state = 0;
+        REG_SERVO = REG_SERVO & 0b0111;
+        fijar_divfrectim0( 20000 - y_mic );
+    } else {
+        pulse_state = 1;
+        REG_SERVO = REG_SERVO | 0b1000;
+        fijar_divfrectim0( y_mic );
+    }
+*/
 // RSI del timer 0 actualizar el pulso del servomotor en funcion del valor de
 //  y_mic. Tambien la rutina programa temporalmente la proxima ejecucion de la
 //  misma con fijar_divfrectim0().

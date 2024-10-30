@@ -40,13 +40,3 @@ int main () {
     }
     return 0;
 }
-
-if ( pulse_state == 1 ) {
-    pulse_state = 0;
-    REG_SERVO = REG_SERVO & 0b0111;
-    fijar_divfrectim0( 20000 - y_mic );
-} else {
-    pulse_state = 1;
-    REG_SERVO = REG_SERVO | 0b1000;
-    fijar_divfrectim0( y_mic );
-}
