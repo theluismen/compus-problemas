@@ -5,7 +5,7 @@
         R0: direccion de vector de tiempo */
     .global capturar_tiempo
 capturar_tiempo:
-        push    { r0-r6 }
+        push    { r0-r6, lr }
 
         bl      iniciar_RTC
         mov     r6, r0          // Copiar @ de tiempo
@@ -27,6 +27,7 @@ capturar_tiempo:
         mov     r2, r0, lsr #4
         mov     r4, #10
         mul     r0, r2, r4
+        add     r0, r3
 
         strb    r0, [ r6, r5 ]
         add     r5, #1
@@ -35,5 +36,6 @@ capturar_tiempo:
         b       .Lwhile
     .Lend_while:
         bl      parar_RTC
-        pop     { r0-r6 }
+        
+        pop     { r0-r6, pc }
 .end
