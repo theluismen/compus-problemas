@@ -6,11 +6,11 @@
     programa principal capture el tiempo */
     .global RSI_timer0
 RSI_timer0:
-        push    { r0, r1 }
+        push    { r0, r1, pc }
 
         ldr     r0, =capturar
         mov     r1, #1
         strb    r1, [ r0 ]
 
-        pop     { r0, r1 }
+        pop     { r0, r1, lr }
 .end
