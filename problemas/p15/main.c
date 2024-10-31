@@ -21,7 +21,7 @@ int main () {
         if ( strobe == 1 ) {
             num_col = ( num_col < 5 ) ? num_col++ : 0 ;
             if ( num_col == 0 ) {
-                index = ( index < strlen(string)-1 ) ? index++ : 0;
+                index = ( index < strlen(string)-1 ) ? index++ : ;
                 currentChar = string[index];
             }
         }

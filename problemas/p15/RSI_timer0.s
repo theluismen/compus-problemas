@@ -20,8 +20,8 @@ RSI_timer0:
         ldrb    r1, [ r1 ]
 
         bl      obtener_puntos          // obtener_puntos ( caracter, num_columna )
+        orr     r0, 0b10000000          // Por si acaso el bit 7 lo dejo en 1
 
-        and     r0, 0b01111111          // Por si acaso el bit 7 lo dejo en 0
         ldr     r1, =REG_DISP           //
         strb    r0, [ r1 ]              // REG_DISP = puntos obtenidos antes
 
@@ -34,8 +34,8 @@ RSI_timer0:
         ldr     r1, =REG_DISP
         ldrb    r0, [ r1 ]              // R0: REG_DISP
 
-        orr     r0, #0b10000000         // Activar bit 7 de REG_DISP
-        strb    r0, [ r1 ]
+        and     r0, #0b01111111         // Desactivar bit 7 de REG_DISP para que desplace
+        strb    r0, [ r1 ]              // REG_DISP ahora con bit 7 a 0
 
         mov     r0, #0
         strb    r0, [ r2 ]              // strobe = 0 para la proxima interrupcion
