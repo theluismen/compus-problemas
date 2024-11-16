@@ -15,7 +15,7 @@ byte 12-17: caracter ...
 //  R1: num_columna
     .global obtener_puntos
 obtener_puntos:
-        push    { r1-r4, pc }
+        push    { r1-r4, lr }
 
         sub     r0, #32             // caracter  -= 32;
         ldr     r2, =base_ASCII     // R2: @base_ASCII
@@ -27,7 +27,7 @@ obtener_puntos:
 
         ldrb    r0, [ r4, r3 ]
 
-        pop     { r1-r4, lr }
+        pop     { r1-r4, pc }
 
 /*
     caracter  -= 32;

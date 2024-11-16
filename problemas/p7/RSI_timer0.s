@@ -6,7 +6,7 @@
 //  ejecucion de la misma con fijar_divfrectim0().
     .global RSI_timer0
 RSI_timer0:
-        push    { r0-r4, pc }
+        push    { r0-r4, lr }
 
         ldr     r3, =y_mic              // R3: @y_mic
         ldr     r4, =pulse_state        // R4: @pulse_state
@@ -34,7 +34,7 @@ RSI_timer0:
         eor     r1, #0b1000
         strb    r1, [ r0 ]
 
-        pop     { r0-r4, lr }
+        pop     { r0-r4, pc }
 .end
 /*  Procedimiento en C
     if ( pulse_state == 1 ) {

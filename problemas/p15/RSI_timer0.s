@@ -5,7 +5,7 @@
 /* RSI_timer0: */
     .global RSI_timer0
 RSI_timer0:
-        push    { r0-r2, pc }
+        push    { r0-r2, lr }
 
         ldr     r2, =strobe             // R2: variable global strobe
         ldrb    r2, [ r2 ]
@@ -40,7 +40,7 @@ RSI_timer0:
         mov     r0, #0
         strb    r0, [ r2 ]              // strobe = 0 para la proxima interrupcion
     .Lend_strobe_1:
-        pop     { r0-r2, lr }
+        pop     { r0-r2, pc }
 .end
 /*
 if ( strobe == 0 ) {

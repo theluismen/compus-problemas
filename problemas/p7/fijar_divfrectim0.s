@@ -11,17 +11,17 @@
 //  R0: ( unsigned short ) micros
     .global fijar_divfrectim0
 fijar_divfrectim0:
-        push    { r0-r2, pc }
+        push    { r0-r2, lr }
 
         ldr     r1, =52365          // R1: 52365
         mul     r2, r0, r1          // R2: micros * 52365
         mov     r0, r2              // R0: micros * 52365
         ldr     r1, =100000         // R1: 100000
-        swi 9                       // R0: (micros * 52365) / 100000
+        swi     9                   // R0: (micros * 52365) / 100000
         rsb     r0, r0, #0          // R0: divFreq = -divFreq
 
         ldr     r1, =TIMER0_DATA    // R1: @TIMER0_DATA
         strh    r0, [ r1 ]          // TIMER0_DATA = r1
 
-        pop     { r0-r2,, lr }
+        pop     { r0-r2, pc }
 .end
