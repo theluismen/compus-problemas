@@ -17,9 +17,9 @@ rsi_timer0:
         @;mov     r0, #0                @; no need to set R0 to 0, because
                                         @; capture_digit() always returns R0 = 0
         /* Hueco h */
-        mov     r0, #0x43
+        strb    r0, [ r1 ]
         ldr     r1, =TIMER0_CR
         /* Hueco i */
-        strh    r0, [r1]                @; stop the timer
+        strh    r0, [ r1 ]              @; stop the timer
 
         pop     { r0-r1, pc }

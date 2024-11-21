@@ -29,7 +29,7 @@ rsi_sensor:
         ldr     r4, =16364
         cmp     r1, r4                  @; check if counter is above 50 cs
         /* Hueco d */
-        blhi    capture_digit
+        blhs    capture_digit
 
         add     r0, #1                  @; update number of pulses
         strb    r0, [r2]                @; if capture_digit() is called, the
@@ -41,9 +41,9 @@ rsi_sensor:
         /* Hueco e */
         ldrh    r1, [r2]                @; read previous activations of LEDs
         mov     r4, #1                  @; create mask for the LED corresponding
-        mov     r4, r4, lsl r0          @; to the current number of pulses
-        orr     r1, r4                  @; activate the LED bit
-        strh    r1, [r2]                  @; update I/O register
+                                        @; to the current number of pulses
+        orr     r1, r4, lsl r0          @; activate the LED bit
+        strh    r1, [r2]                @; update I/O register
 
         add     r3, #2                  @; R3 points to TIMER0_CR
         mov     r0, #0
